@@ -99,7 +99,7 @@ function updateCreditCalculations() {
 
     // Format results
     creditResults.innerHTML = `
-      <div class="grid grid-cols-2 gap-6">
+      <div class="flex justify-evenly items-center max-md:flex-col gap-6">
         <div>
           <p class="mb-1 text-sm font-medium text-gray-600">Total Payable</p>
           <p class="text-2xl sm:text-3xl font-bold text-indigo-800">${formatter.format(totalAmount)}</p>
@@ -163,7 +163,7 @@ function updateDepositCalculations() {
     
     // Format results
     depositResults.innerHTML = `
-      <div class="grid grid-cols-2 gap-6">
+      <div class="flex justify-evenly items-center max-md:flex-col gap-6">
         <div>
           <p class="mb-1 text-sm font-medium text-gray-600">Final Balance</p>
           <p class="text-2xl sm:text-3xl font-bold text-green-700">${formatter.format(finalAmount)}</p>
