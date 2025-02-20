@@ -3,25 +3,7 @@ const menu = document.getElementById("menu");
 const nav = document.getElementById("nav");
 
 menu.onclick = function () {
-    // Check if nav is currently hidden
-    const isHidden = nav.classList.contains("hidden");
-    
-    if (isHidden) {
-        // First make it visible but with opacity 0
-        nav.classList.remove("hidden");
-        // Force browser to process the removal of hidden class
-        setTimeout(() => {
-            nav.style.opacity = "1";
-        }, 10);
-    } else {
-        // First make it transparent
-        nav.style.opacity = "0";
-        // Then hide it after transition completes
-        setTimeout(() => {
-            nav.classList.add("hidden");
-        }, 300); // Match your transition duration (300ms)
-    }
-    
+    nav.classList.toggle("hidden");
     document.body.classList.toggle("overflow-hidden");
 }
 
