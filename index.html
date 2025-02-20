@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculator</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-50">
+    <header class="py-5 bg-[#6F0BBB] shadow-lg fixed top-0 left-0 right-0 z-30">
+        <div class="container mx-auto px-4 md:px-7 flex justify-between items-center">
+            <div class="logo">
+                <h1 class="text-2xl md:text-3xl text-white font-medium">LOGO</h1>
+            </div>
+            <div id="menu" class="menu-icon md:hidden w-10 h-10 flex items-center justify-center text-white cursor-pointer z-50 relative">
+                <div class="hamburger-icon relative w-6 h-5">
+                    <span class="hamburger-line absolute top-0 left-0 w-full h-0.5 bg-white rounded transition-all duration-300"></span>
+                    <span class="hamburger-line absolute top-1/2 -translate-y-1/2 left-0 w-full h-0.5 bg-white rounded transition-all duration-300"></span>
+                    <span class="hamburger-line absolute bottom-0 left-0 w-full h-0.5 bg-white rounded transition-all duration-300"></span>
+                </div>
+            </div>
+            <nav id="nav" class="hidden md:block fixed md:static inset-0 bg-[#6F0BBB]/95 md:bg-transparent z-40 transition-all duration-300 opacity-0 md:opacity-100">
+                <div class="h-full flex flex-col justify-center md:block">
+                    <ul class="flex flex-col md:flex-row items-center justify-center text-white text-lg md:text-xl gap-8 md:gap-7">
+                        <li><a href="#" class="block py-3 md:py-0 hover:text-purple-200 transition-colors relative">
+                            Home
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                        <li><a href="#" class="block py-3 md:py-0 hover:text-purple-200 transition-colors relative">
+                            About
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                        <li><a href="#" class="block py-3 md:py-0 hover:text-purple-200 transition-colors relative">
+                            Services
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                        <li><a href="#" class="block py-3 md:py-0 hover:text-purple-200 transition-colors relative">
+                            Portfolio
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                        <li><a href="#" class="block py-3 md:py-0 hover:text-purple-200 transition-colors relative">
+                            Contact
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero relative min-h-screen w-full overflow-hidden bg-gradient-to-r from-indigo-900 via-purple-800 to-pink-800 pt-20">
+        <!-- Animated background elements -->
+        <div class="absolute -left-10 -top-10 h-64 w-64 rounded-full bg-purple-500 opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 h-80 w-80 rounded-full bg-pink-600 opacity-20 blur-3xl"></div>
+        
+        <div class="container relative mx-auto h-full max-w-7xl px-4 py-8 md:py-12">
+            <div class="flex flex-col items-center gap-8">
+                <!-- Calculator Type Selector -->
+                <div class="calculator-tabs w-full max-w-md flex rounded-lg overflow-hidden shadow-lg">
+                    <button id="creditTabBtn" class="calculator-tab active flex-1 py-4 text-center font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 transition">
+                        <i class="fa-solid fa-money-bill-wave mr-2"></i>Credit Calculator
+                    </button>
+                    <button id="depositTabBtn" class="calculator-tab flex-1 py-4 text-center font-medium text-gray-700 bg-gray-200 hover:bg-gray-300 transition">
+                        <i class="fa-solid fa-vault mr-2"></i>Deposit Calculator
+                    </button>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8 w-full justify-center items-center">            
+                    <!-- Left side: Title and info -->
+                    <div class="flex max-w-md flex-col justify-center text-center lg:text-left">
+                        <h1 class="mb-6 text-4xl font-bold leading-tight text-white md:text-5xl">
+                            Smart <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">Financial</span> Planning
+                        </h1>
+                        
+                        <p class="mb-8 text-indigo-100">
+                            Calculate your ideal loan or investment return in seconds with our advanced calculator.
+                        </p>
+                        
+                        <!-- Interest information card -->
+                        <div id="creditInfo" class="mt-4 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+                            <h3 class="mb-2 font-semibold text-white">Current Credit Rates</h3>
+                            <div class="flex flex-col gap-1 text-sm text-indigo-100">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-300" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Base monthly rate: 1.0% interest</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-300" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Compound interest applied</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="depositInfo" class="mt-4 rounded-xl bg-white/10 p-4 backdrop-blur-sm hidden">
+                            <h3 class="mb-2 font-semibold text-white">Current Deposit Rates</h3>
+                            <div class="flex flex-col gap-1 text-sm text-indigo-100">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-300" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Annual interest rate: 3.5%</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-purple-300" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Monthly compounding</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side: Credit Calculator -->
+                    <div id="creditCalculator" class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+                        <div class="mb-6 flex items-center justify-between">
+                            <h2 class="text-2xl font-bold text-gray-800">Loan Calculator</h2>
+                            <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800">Instant Results</span>
+                        </div>
+                        
+                        <!-- Amount slider -->
+                        <div class="mb-6">
+                            <div class="mb-2 flex justify-between">
+                                <label for="creditAmountInput" class="text-sm font-medium text-gray-700">Loan Amount</label>
+                                <span id="creditAmountValue" class="text-sm font-medium text-indigo-700">$4,000</span>
+                            </div>
+                            
+                            <div class="relative mb-2">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                                <input id="creditAmountInput" class="w-full rounded-lg border border-gray-300 py-3 pl-8 pr-3 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200" type="number" placeholder="Enter amount" value="4000">
+                            </div>
+                            
+                            <input id="creditAmountRange" type="range" value="4000" min="300" max="40000" step="100" class="w-full accent-indigo-600">
+                            
+                            <div class="mt-1 flex justify-between text-xs text-gray-500">
+                                <span>$300</span>
+                                <span>$40,000</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Duration slider -->
+                        <div class="mb-6">
+                            <div class="mb-2 flex justify-between">
+                                <label for="creditDurationInput" class="text-sm font-medium text-gray-700">Loan Duration</label>
+                                <span id="creditDurationValue" class="text-sm font-medium text-indigo-700">24 months</span>
+                            </div>
+                            
+                            <div class="relative mb-1">
+                                <input id="creditDurationInput" class="w-full rounded-lg border border-gray-300 py-3 px-3 pr-16 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200" type="number" placeholder="Enter duration" value="24">
+                                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">months</span>
+                            </div>
+                            
+                            <input id="creditDurationRange" type="range" value="24" min="3" max="48" step="1" class="w-full accent-indigo-600">
+                            
+                            <div class="mt-1 flex justify-between text-xs text-gray-500">
+                                <span>3 months</span>
+                                <span>48 months</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Results -->
+                        <div class="credit-results mb-8 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 p-5 text-center">
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <button class="w-full rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 py-4 font-medium text-white shadow-lg transition hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                            Apply Now
+                        </button>
+                    </div>
+
+                    <!-- Deposit Calculator -->
+                    <div id="depositCalculator" class="hidden w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+                        <div class="mb-6 flex items-center justify-between">
+                            <h2 class="text-2xl font-bold text-gray-800">Deposit Calculator</h2>
+                            <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800">3.5% APY</span>
+                        </div>
+                        
+                        <!-- Initial deposit slider -->
+                        <div class="mb-6">
+                            <div class="mb-2 flex justify-between">
+                                <label for="depositAmountInput" class="text-sm font-medium text-gray-700">Initial Deposit</label>
+                                <span id="depositAmountValue" class="text-sm font-medium text-green-700">$5,000</span>
+                            </div>
+                            
+                            <div class="relative mb-2">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                                <input id="depositAmountInput" class="w-full rounded-lg border border-gray-300 py-3 pl-8 pr-3 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-200" type="number" placeholder="Enter amount" value="5000">
+                            </div>
+                            
+                            <input id="depositAmountRange" type="range" value="5000" min="500" max="50000" step="500" class="w-full accent-green-600">
+                            
+                            <div class="mt-1 flex justify-between text-xs text-gray-500">
+                                <span>$500</span>
+                                <span>$50,000</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Term slider -->
+                        <div class="mb-6">
+                            <div class="mb-2 flex justify-between">
+                                <label for="depositTermInput" class="text-sm font-medium text-gray-700">Term Length</label>
+                                <span id="depositTermValue" class="text-sm font-medium text-green-700">12 months</span>
+                            </div>
+                            
+                            <div class="relative mb-1">
+                                <input id="depositTermInput" class="w-full rounded-lg border border-gray-300 py-3 px-3 pr-16 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-200" type="number" placeholder="Enter term" value="12">
+                                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">months</span>
+                            </div>
+                            
+                            <input id="depositTermRange" type="range" value="12" min="3" max="60" step="1" class="w-full accent-green-600">
+                            
+                            <div class="mt-1 flex justify-between text-xs text-gray-500">
+                                <span>3 months</span>
+                                <span>60 months</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Results -->
+                        <div class="deposit-results mb-8 overflow-hidden rounded-xl bg-gradient-to-r from-green-50 via-teal-50 to-emerald-50 p-5 text-center">
+                        </div>
+                        
+                        <!-- CTA Button -->
+                        <button class="w-full rounded-lg bg-gradient-to-r from-green-600 to-teal-600 py-4 font-medium text-white shadow-lg transition hover:from-green-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                            Open Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
