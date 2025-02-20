@@ -3,9 +3,11 @@ const menu = document.getElementById("menu");
 const nav = document.getElementById("nav");
 
 menu.onclick = function () {
-    nav.classList.toggle("hidden");
+    nav.classList.toggle("hidden"); 
+    nav.classList.toggle("opacity-0"); 
+    nav.classList.toggle("opacity-100"); 
     document.body.classList.toggle("overflow-hidden");
-}
+};
 
 // Tab switching functionality
 const creditTabBtn = document.getElementById("creditTabBtn");
