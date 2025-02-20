@@ -90,9 +90,11 @@ function updateCreditCalculations() {
     let amount = parseInt(amountRange.value) || 0;
     let duration = parseInt(durationRange.value) || 0;
 
-    let monthlyRate = 0.01; // Base monthly interest rate (1%)
-    let totalAmount = amount * Math.pow(1 + monthlyRate, duration); // Compound interest formula
-    let monthlyPayment = totalAmount / duration;
+    let annualRate = 0.12; // Yıllık faiz oranı (örnek %12)
+    let monthlyRate = annualRate / 12; // Aylık faiz oranı
+
+    let monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -duration));
+    let totalAmount = monthlyPayment * duration;
     let totalInterest = totalAmount - amount;
 
     // Format results
